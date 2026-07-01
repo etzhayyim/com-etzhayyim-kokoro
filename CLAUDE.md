@@ -186,7 +186,7 @@ cycle.
 
 R1 smoke test (when cells created):
 ```bash
-cd 40-engine/kotoba/crates/kotoba-kotodama/py
+cd kotoba-lang/kotodama-py
 python -c "from kotodama.cells.kokoro_peer_support_circle import _r0_marker" 2>&1 | grep "R0 scaffold"
 ```
 
