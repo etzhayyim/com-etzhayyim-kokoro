@@ -1,0 +1,92 @@
+{"lexicon" 1,
+ "id" "com.etzhayyim.kokoro.counselorAttestation",
+ "description"
+ "Counselor L5 vocation-flow community-witnessed-competence record. G3 STRUCTURAL: counselorClass const 'community-witnessed-competent' (NOT clergy / NOT ordained / NOT state-licensed-psych / NOT clinical-psychiatrist / NOT ordained-pastoral-counselor). G14 STRUCTURAL: lLevel const L5 + employmentRelation const vocation-flow. ≥3 prior counselor attestations REQUIRED (witnessing chain; musubi G3 pattern shared; structurally distinct from clinical-psych credentialing).",
+ "defs"
+ {"main"
+  {"type" "record",
+   "key" "tid",
+   "record"
+   {"type" "object",
+    "required"
+    ["createdAt"
+     "counselorDid"
+     "counselorClass"
+     "lLevel"
+     "employmentRelation"
+     "witnessingCounselorAttestations"
+     "councilAttestations"
+     "stewardLaborAttestationCid"],
+    "properties"
+    {"employmentRelation"
+     {"type" "string",
+      "const" "vocation-flow",
+      "description"
+      "G14 STRUCTURAL: vocation-flow steward (NOT employee; NOT contractor; NOT clinical-psych-on-stipend)"},
+     "doctrinalTraditionSelfDeclared"
+     {"type" "string",
+      "knownValues"
+      ["reformed"
+       "presbyterian"
+       "baptist"
+       "methodist"
+       "anglican-low-church"
+       "nondenominational"
+       "shinto-rooted"
+       "buddhist-rooted"
+       "cross-tradition"
+       "ecumenical"
+       "questioning-tradition"],
+      "description"
+      "Transparency declaration (NOT gatekeeping per G12 cross-doctrinal Wellbecoming; members can request matching tradition)"},
+     "witnessingCounselorAttestations"
+     {"type" "array",
+      "items" {"type" "string"},
+      "minLength" 3,
+      "description"
+      "≥3 prior counselor attestation CIDs witnessing community-witnessed competence (musubi G3 pattern shared; structurally distinct from clinical-psych credentialing)"},
+     "createdAt" {"type" "string", "format" "datetime"},
+     "counselorClass"
+     {"type" "string",
+      "const" "community-witnessed-competent",
+      "description"
+      "G3 STRUCTURAL: const 'community-witnessed-competent'; clergy/ordained/state-licensed-psych/clinical-psychiatrist/ordained-pastoral-counselor DELIBERATELY excluded (Reformed 万人祭司 + iyashi N9 + chigiri G14 UPL-equivalent pattern shared)"},
+     "supportAreasCompetent"
+     {"type" "array",
+      "items"
+      {"type" "string",
+       "knownValues"
+       ["grief"
+        "chronic-mental-health-continuity"
+        "postnatal-mood"
+        "acute-crisis-de-escalation"
+        "peer-circle-facilitation"
+        "spiritual-discernment"
+        "vocational-discernment"]}},
+     "revokedAt" {"type" "string", "format" "datetime"},
+     "revocationReasonCid" {"type" "string"},
+     "attestationStatus"
+     {"type" "string",
+      "knownValues"
+      ["pending-witnessing"
+       "active"
+       "on-leave"
+       "revoked-by-council"
+       "voluntary-withdrawal"]},
+     "counselorDid" {"type" "string"},
+     "lLevel"
+     {"type" "string",
+      "const" "L5",
+      "description"
+      "G14 STRUCTURAL: L5 vocation-flow per Liberation Ladder"},
+     "sessionsFacilitatedCount" {"type" "integer", "minimum" 0},
+     "stewardLaborAttestationCid"
+     {"type" "string",
+      "description"
+      "Cross-link to chigiri.stewardLaborAttestation (lLevel=L5 + employmentRelation=vocation-flow)"},
+     "councilAttestations"
+     {"type" "array",
+      "items" {"type" "string"},
+      "minLength" 3,
+      "description"
+      "≥3 Council Lv6+ DIDs attesting counselor classification"}}}}}}

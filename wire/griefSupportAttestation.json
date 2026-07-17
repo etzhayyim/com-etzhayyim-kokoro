@@ -1,0 +1,68 @@
+{
+  "lexicon": 1,
+  "id": "com.etzhayyim.kokoro.griefSupportAttestation",
+  "description": "Per-grief-support-session attestation. G4 STRUCTURAL: encryptedPayloadCid REQUIRED. Cross-link to musubi.ceremonyPerformanceAttestation (funeral type). Cross-doctrinal Wellbecoming accommodation (G12). Multi-week / multi-month bereavement arc supported.",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": [
+          "createdAt",
+          "bereavedPseudonymDid",
+          "musubiFuneralCeremonyPerformanceCid",
+          "sessionSequenceNumber",
+          "counselorAttestationCid",
+          "encryptedPayloadCid",
+          "attestingCellDid"
+        ],
+        "properties": {
+          "createdAt": {"type": "string", "format": "datetime"},
+          "bereavedPseudonymDid": {
+            "type": "string",
+            "description": "30-day rotating pseudonym DID per ADR-2605181200"
+          },
+          "musubiFuneralCeremonyPerformanceCid": {
+            "type": "string",
+            "description": "Cross-link to musubi.ceremonyPerformanceAttestation (ceremonyType=funeral)"
+          },
+          "sessionSequenceNumber": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Bereavement support session sequence (multi-session arc; weeks/months as needed)"
+          },
+          "counselorAttestationCid": {
+            "type": "string",
+            "description": "Cross-link to counselorAttestation; G3+G14 structural enforcement"
+          },
+          "encryptedPayloadCid": {
+            "type": "string",
+            "description": "G4 REQUIRED: ADR-2605181100 encrypted envelope CID"
+          },
+          "doctrinalAccommodation": {
+            "type": "string",
+            "knownValues": ["reformed", "presbyterian", "baptist", "methodist", "anglican-low-church", "nondenominational", "shinto-rooted", "buddhist-rooted", "cross-tradition", "ecumenical", "questioning-tradition"],
+            "description": "G12 cross-doctrinal Wellbecoming; bereaved's tradition for accommodation"
+          },
+          "supportArcStatus": {
+            "type": "string",
+            "knownValues": ["initial-acute", "ongoing-monthly", "milestone-anniversary", "transition-to-peer-circle", "completed", "withdrawn-bereaved-choice"]
+          },
+          "acuteCrisisEscalationTriggered": {
+            "type": "boolean",
+            "description": "If grief presented as acute crisis (e.g., suicidal ideation), G13 escalation"
+          },
+          "acuteCrisisEscalationLogCid": {"type": "string"},
+          "videoRecordingPresent": {
+            "type": "boolean",
+            "const": false,
+            "description": "G4 STRUCTURAL: const false"
+          },
+          "kotobaDatomicAttestationCid": {"type": "string"},
+          "attestingCellDid": {"type": "string"}
+        }
+      }
+    }
+  }
+}

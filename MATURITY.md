@@ -13,12 +13,12 @@ honest framing (G8): できていないことは「未」と明記する。
 
 ### iter-1 (2026-06-02)
 **worldwide crisis-support directory + machine floor + verification workflow。**
-`20-actors/kokoro/registry/support-lines.seed.json` の世界規模 crisis-support
+`registry/support-lines.seed.edn` の世界規模 crisis-support
 ディレクトリ(127件 / 31管轄 + 国際ディレクトリ; 全件 `unverified-seed`, G14)に対し、
-fail-closed pytest 不変条件 `70-tools/scripts/audit/test_kokoro_registry_seed.py`
-(8 tests green: parse/非空 lines · lineId 一意 · 全件 unverified-seed · contact+https
+fail-closed Clojure/EDN 不変条件 `test/kokoro/registry_seed_test.clj`
+(parse/非空 lines · lineId 一意 · 全件 unverified-seed · contact+https
 provenance+ISO lastVerified · ≥12管轄 · supportKind 許可集合 · notes 非空+非臨床
 support-routing 境界参照 · 整数 freshnessWindowDays) を追加し、G14 三層人手チェックリスト
-`20-actors/kokoro/registry/VERIFICATION.md`(SAFETY-CRITICAL: 各 contact 番号の公式
+`registry/VERIFICATION.md`(SAFETY-CRITICAL: 各 contact 番号の公式
 ソース再検証を前景化 / 管轄ごと公式ソース provenance チェック fail-closed / 非臨床
 support-routing 境界再確認 / honest: 0件 verified, 90日 tighter freshness)を作成。

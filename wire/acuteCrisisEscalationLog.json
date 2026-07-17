@@ -1,0 +1,75 @@
+{
+  "lexicon": 1,
+  "id": "com.etzhayyim.kokoro.acuteCrisisEscalationLog",
+  "description": "Per-acute-crisis-escalation log. G13 STRUCTURAL: mitateG5EmergencyKeywordTriggeredCid REQUIRED (cross-actor existing pattern reused from hagukumi G11 + iyashi G10). Severity enum constrains escalation routing. Encrypted envelope MANDATORY for context detail.",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": [
+          "createdAt",
+          "affectedPseudonymDid",
+          "severity",
+          "detectionSourceCid",
+          "mitateG5EmergencyKeywordTriggeredCid",
+          "encryptedContextCid",
+          "attestingCellDid"
+        ],
+        "properties": {
+          "createdAt": {"type": "string", "format": "datetime"},
+          "affectedPseudonymDid": {
+            "type": "string",
+            "description": "30-day rotating pseudonym DID; affected member privacy preserved"
+          },
+          "severity": {
+            "type": "string",
+            "knownValues": ["info", "warning", "critical-immediate-risk"],
+            "description": "critical-immediate-risk = immediate mitate G5 trigger + iyashi clinical surge"
+          },
+          "detectionSourceCid": {
+            "type": "string",
+            "description": "Source attestation CID where crisis detected (peerSupportCircleAttestation / griefSupportAttestation / postnatal screening / chronic continuity record)"
+          },
+          "mitateG5EmergencyKeywordTriggeredCid": {
+            "type": "string",
+            "description": "G13 REQUIRED: mitate G5 emergency keyword trigger CID (cross-actor existing pattern)"
+          },
+          "iyashiClinicalSurgeRequestCid": {
+            "type": "string",
+            "description": "If clinical surge needed, iyashi.acute_first_line or temporary triage cross-link"
+          },
+          "chigiriDisputeMediationCid": {
+            "type": "string",
+            "description": "If Council-level escalation required (rare; involuntary intervention scenarios), chigiri.disputeMediation cross-link"
+          },
+          "involuntaryInterventionAttested": {
+            "type": "boolean",
+            "description": "Whether involuntary intervention was used; if true, REQUIRES Council Lv6+ ≥3 attestation chain + clinical-judgment-via-mitate licensed clinician (kokoro does NOT initiate involuntary care unilaterally)"
+          },
+          "councilLv6AttestationsForInvoluntary": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "If involuntaryInterventionAttested=true, Council Lv6+ ≥3 DIDs required"
+          },
+          "memberConsentObtainedForVoluntary": {
+            "type": "boolean",
+            "description": "Whether member consent was obtained for voluntary intervention (preferred path)"
+          },
+          "encryptedContextCid": {
+            "type": "string",
+            "description": "ADR-2605181100 encrypted envelope CID containing crisis detail context (PII; only Council + mitate + iyashi cross-actor can decrypt)"
+          },
+          "resolutionStatus": {
+            "type": "string",
+            "knownValues": ["escalation-initiated", "mitate-engaged", "iyashi-clinical-surge-active", "stabilized", "transitioned-to-chronic-continuity", "resolved", "withdrawn-member-choice"]
+          },
+          "resolvedAt": {"type": "string", "format": "datetime"},
+          "kotobaDatomicAttestationCid": {"type": "string"},
+          "attestingCellDid": {"type": "string"}
+        }
+      }
+    }
+  }
+}

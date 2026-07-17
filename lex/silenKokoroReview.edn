@@ -1,0 +1,102 @@
+{"lexicon" 1,
+ "id" "com.etzhayyim.kokoro.silenKokoroReview",
+ "description"
+ "Quarterly Council review. Const-field structural enforcement across G3/G4/G5/G6/G7/G8/G9/G10/G14. Verifies NOT-clinical-psychiatric-entity discipline + no commercial mental health software + no commercial AI therapy + no conversion therapy + opt-in only + no surveillance-based mood monitoring + human-in-loop + vocation-flow L5 counselor.",
+ "defs"
+ {"main"
+  {"type" "record",
+   "key" "tid",
+   "record"
+   {"type" "object",
+    "required"
+    ["createdAt"
+     "reviewPeriodStartUtc"
+     "reviewPeriodEndUtc"
+     "clinicalPsychiatricEntityPenetrationPct"
+     "videoRecordingEventsCount"
+     "conversionTherapyEventsCount"
+     "aiOnlyTherapyEventsCount"
+     "commercialMentalHealthSoftwarePenetrationPct"
+     "commercialAiTherapyChatbotPenetrationPct"
+     "mandatoryScreeningEventsCount"
+     "surveillanceBasedMoodMonitoringEventsCount"
+     "counselorVocationFlowCompliantRatioPctIntegerHundredths"
+     "councilAttestations"],
+    "properties"
+    {"totalGriefSupportSessions" {"type" "integer", "minimum" 0},
+     "reviewPeriodEndUtc" {"type" "string", "format" "datetime"},
+     "counselorCount" {"type" "integer"},
+     "createdAt" {"type" "string", "format" "datetime"},
+     "totalPostnatalScreeningOptInCount"
+     {"type" "integer", "minimum" 0},
+     "totalPeerCircleSessions" {"type" "integer", "minimum" 0},
+     "clinicalPsychiatricEntityPenetrationPct"
+     {"type" "integer",
+      "const" 0,
+      "description"
+      "G3 STRUCTURAL: const 0; kokoro is NOT clinical psychiatric entity"},
+     "totalAcuteCrisisEscalationsToMitate"
+     {"type" "integer", "minimum" 0},
+     "ipfsPinCid" {"type" "string"},
+     "videoRecordingEventsCount"
+     {"type" "integer",
+      "const" 0,
+      "description" "G4 STRUCTURAL: const 0; no video recording"},
+     "wellbecomingAttested" {"type" "boolean"},
+     "mandatoryScreeningEventsCount"
+     {"type" "integer",
+      "const" 0,
+      "description"
+      "G9 STRUCTURAL: const 0; free conscience; opt-in only"},
+     "conversionTherapyEventsCount"
+     {"type" "integer",
+      "const" 0,
+      "description"
+      "G5 STRUCTURAL: const 0; conversion therapy / behavior modification PROHIBITED (sexual orientation / gender identity / religious belief NEVER targets)"},
+     "aiOnlyTherapyEventsCount"
+     {"type" "integer",
+      "const" 0,
+      "description" "G6 STRUCTURAL: const 0; human-in-loop ALWAYS"},
+     "totalCounselingReferralsToExternal"
+     {"type" "integer", "minimum" 0},
+     "involuntaryInterventionEventsTotal"
+     {"type" "integer",
+      "description"
+      "If non-zero, requires Council Lv6+ ≥3 + clinical-judgment-via-mitate licensed clinician attestation per event"},
+     "commercialMentalHealthSoftwarePenetrationPct"
+     {"type" "integer",
+      "const" 0,
+      "description"
+      "G7 STRUCTURAL: const 0; no BetterHelp / Talkspace / Cerebral / Modern Health / Lyra / Calm-business / Headspace-Enterprise / Spring Health / Brightline / Octave / Two Chairs / Charlie Health"},
+     "surveillanceBasedMoodMonitoringEventsCount"
+     {"type" "integer",
+      "const" 0,
+      "description"
+      "G10 STRUCTURAL: const 0; Charter §2(c); no smart-wearable / facial-emotion-recognition / voice-affect-analysis"},
+     "publishedAtMstUri" {"type" "string"},
+     "commercialAiTherapyChatbotPenetrationPct"
+     {"type" "integer",
+      "const" 0,
+      "description"
+      "G8 STRUCTURAL: const 0; no Woebot / Wysa / Replika-as-therapy / character.ai-as-therapy / GPT-as-therapy / Anthropic-direct-therapy / Claude-as-therapy"},
+     "multiGenCohortRatioAvgPctIntegerHundredths"
+     {"type" "object",
+      "properties"
+      {"under18Pct" {"type" "integer"},
+       "adultPct" {"type" "integer"},
+       "over65Pct" {"type" "integer"}},
+      "description"
+      "G11 multi-gen invariant tracking; peer circle cohort mix averaged"},
+     "doctrinalAccommodationDiversityCount"
+     {"type" "integer",
+      "description"
+      "G12 cross-doctrinal Wellbecoming; count of distinct doctrinal traditions accommodated this period"},
+     "reviewPeriodStartUtc" {"type" "string", "format" "datetime"},
+     "totalChronicContinuitySessions" {"type" "integer", "minimum" 0},
+     "councilAttestations"
+     {"type" "array", "items" {"type" "string"}, "minLength" 3},
+     "counselorVocationFlowCompliantRatioPctIntegerHundredths"
+     {"type" "integer",
+      "const" 10000,
+      "description"
+      "G14 STRUCTURAL: const 10000 (100%); all counselors vocation-flow L5"}}}}}}

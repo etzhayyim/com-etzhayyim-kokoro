@@ -1,0 +1,99 @@
+{"lexicon" 1,
+ "id" "com.etzhayyim.kokoro.peerSupportCircleAttestation",
+ "description"
+ "Per-peer-support-circle-session attestation. G4 STRUCTURAL: encryptedPayloadCid REQUIRED (mental health PHI). G9 STRUCTURAL: optInOnly const true (free conscience invariant). G10 STRUCTURAL: surveillanceBasedMonitoring const false (Charter §2(c)). G11 STRUCTURAL: cohortMix multi-gen tracking.",
+ "defs"
+ {"main"
+  {"type" "record",
+   "key" "tid",
+   "record"
+   {"type" "object",
+    "required"
+    ["createdAt"
+     "circleSessionTopic"
+     "facilitatorAttestationCid"
+     "participantPseudonymDids"
+     "encryptedPayloadCid"
+     "optInOnly"
+     "surveillanceBasedMonitoring"
+     "cohortMix"
+     "attestingCellDid"],
+    "properties"
+    {"cohortMix"
+     {"type" "ref",
+      "ref" "#cohortMixEntry",
+      "description" "G11 multi-gen invariant tracking"},
+     "surveillanceBasedMonitoring"
+     {"type" "boolean",
+      "const" false,
+      "description"
+      "G10 STRUCTURAL: const false; no smart-wearable mood tracking / no facial-emotion-recognition / no voice-affect-analysis"},
+     "acuteCrisisEscalationTriggered"
+     {"type" "boolean",
+      "description"
+      "If any participant required G13 acute crisis escalation, true; cross-link to acuteCrisisEscalationLog"},
+     "optInOnly"
+     {"type" "boolean",
+      "const" true,
+      "description"
+      "G9 STRUCTURAL: const true; free conscience invariant; all participants opted in"},
+     "circleSessionTopic"
+     {"type" "string",
+      "knownValues"
+      ["grief-cross-doctrinal"
+       "chronic-illness-support"
+       "parenting-multi-gen"
+       "aging-elders"
+       "vocational-vow-discernment"
+       "rededication-discernment"
+       "cross-doctrinal-spiritual-questions"
+       "general-community-discernment"]},
+     "kotobaDatomicAttestationCid" {"type" "string"},
+     "createdAt" {"type" "string", "format" "datetime"},
+     "facilitatorAttestationCid"
+     {"type" "string",
+      "description"
+      "Cross-link to counselorAttestation CID; G3+G14 structural enforcement at counselor level"},
+     "encryptedPayloadCid"
+     {"type" "string",
+      "description"
+      "G4 REQUIRED: ADR-2605181100 encrypted envelope CID containing session content (mental health PHI; not exposed publicly)"},
+     "charterRiderScanRunCid" {"type" "string"},
+     "acuteCrisisEscalationLogCid" {"type" "string"},
+     "videoRecordingPresent"
+     {"type" "boolean",
+      "const" false,
+      "description"
+      "G4 STRUCTURAL: const false; no video recording (mirrors hagukumi G2 + iyashi G3)"},
+     "doctrinalAccommodation"
+     {"type" "array",
+      "items"
+      {"type" "string",
+       "knownValues"
+       ["reformed"
+        "presbyterian"
+        "baptist"
+        "methodist"
+        "anglican-low-church"
+        "nondenominational"
+        "shinto-rooted"
+        "buddhist-rooted"
+        "cross-tradition"
+        "ecumenical"
+        "questioning-tradition"]},
+      "description"
+      "G12 cross-doctrinal Wellbecoming; traditions accommodated in this circle"},
+     "attestingCellDid" {"type" "string"},
+     "participantPseudonymDids"
+     {"type" "array",
+      "items" {"type" "string"},
+      "description"
+      "30-day rotating pseudonym DIDs per ADR-2605181200"}}}},
+  "cohortMixEntry"
+  {"type" "object",
+   "required" ["under18Count" "adultCount" "over65Count"],
+   "properties"
+   {"under18Count" {"type" "integer", "minimum" 0},
+    "adultCount" {"type" "integer", "minimum" 0},
+    "over65Count" {"type" "integer", "minimum" 0},
+    "totalParticipants" {"type" "integer", "minimum" 0}}}}}

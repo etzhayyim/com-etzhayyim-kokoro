@@ -1,4 +1,4 @@
-# 20-actors/kokoro — CLAUDE.md
+# com-etzhayyim-kokoro — CLAUDE.md
 
 ## Identity
 
@@ -182,19 +182,15 @@ cycle.
 
 ## Build & Deploy
 
-**R0 status**: Scaffold only. R0 cells RuntimeError on import.
-
-R1 smoke test (when cells created):
-```bash
-cd kotoba-lang/kotodama-py
-python -c "from kotodama.cells.kokoro_peer_support_circle import _r0_marker" 2>&1 | grep "R0 scaffold"
-```
+**R0 status**: standalone EDN contracts plus dry-run social cell. Runtime activation
+belongs in its owning engine repository and must consume this actor through the west checkout.
+Run this repository's complete suite with `bb --classpath src:test run_tests.clj`.
 
 ## Related Files
 
-- `/20-actors/kokoro/manifest.jsonld`
-- `/20-actors/kokoro/README.md`
-- `/00-contracts/lexicons/com/etzhayyim/kokoro/` (5 Lexicons + README)
+- `manifest.edn` (canonical)
+- `README.md`
+- `lex/` (canonical EDN) and `wire/` (external JSON)
 - `/90-docs/adr/2605263700-kokoro-mental-health-tier-b-actor-r0.md`
 - `/90-docs/adr/2605181100-mst-encrypted-records-signal-keywrap.md` — G4 envelope
 - `/90-docs/adr/2605263400-musubi-covenant-ceremony-tier-b-actor-r0.md` — grief TIGHT pair + G3 musubi pattern shared

@@ -91,7 +91,7 @@ shared).
 | `acuteCrisisEscalationLog` | G13 STRUCTURAL: mitateG5EmergencyKeywordTriggeredCid REQUIRED; severity enum |
 | `silenKokoroReview` | G3/G4/G5/G6/G7/G8/G9/G10/G14 const-field structural enforcement (10+ const-field structurals) |
 
-See `/00-contracts/lexicons/com/etzhayyim/kokoro/README.md`.
+Canonical schemas live in `lex/`; external JSON projections live in `wire/`.
 
 ## Constitutional Gates (G1–G14)
 
@@ -112,9 +112,9 @@ See ADR-2605263700 §6.
 
 ## Related Files
 
-- `/20-actors/kokoro/manifest.jsonld`
-- `/20-actors/kokoro/CLAUDE.md`
-- `/00-contracts/lexicons/com/etzhayyim/kokoro/` (5 Lexicons + README)
+- `manifest.edn` (canonical)
+- `CLAUDE.md`
+- `lex/` (5 canonical EDN lexicons)
 - `/90-docs/adr/2605263700-kokoro-mental-health-tier-b-actor-r0.md`
 - `/90-docs/adr/2605263400-musubi-covenant-ceremony-tier-b-actor-r0.md` — grief TIGHT pair
 - `/90-docs/adr/2605263000-iyashi-clinical-care-provider-tier-b-actor-r0.md` — chronic + postnatal TIGHT pair

@@ -4,7 +4,7 @@
   Substrate-native Clojure (clj + datomic first tier). kokoro is mental-health PEER + grief
   support — explicitly NOT a clinical psychiatric entity, NOT commercial therapy software, NOT
   an AI therapist. Its 14 gates are structural in the manifest + the 5 central AT-Proto lexicons
-  at 00-contracts/lexicons/com/etzhayyim/kokoro/*.json. This suite pins them so a future R1 cell
+  as canonical EDN under lex/*.edn. This suite pins them so a future R1 cell
   wave cannot silently drift them:
 
     G3  community-witnessed-competent (NOT a state-licensed psychiatric entity)
@@ -22,19 +22,17 @@
   invariants — kokoro holds no key and is human-in-loop by construction."
   (:require [clojure.test :refer [deftest is run-tests]]
             [clojure.set :as set]
-            [cheshire.core :as json]))
+            [clojure.edn :as edn]))
 
 #?(:clj
    (do
      (def ^:private here (.getParentFile (java.io.File. ^String *file*)))      ;; methods/
-     (def ^:private actor-dir (.getParentFile here))                          ;; kokoro/
-     (def ^:private root (.getParentFile (.getParentFile actor-dir)))          ;; repo root
-     (def ^:private lexdir
-       (java.io.File. root "00-contracts/lexicons/com/etzhayyim/kokoro"))
+     (def ^:private repository-root (.. here getParentFile getParentFile getParentFile))
+     (def ^:private lexdir (java.io.File. repository-root "lex"))
      (defn- lex [name]
-       (json/parse-string (slurp (java.io.File. lexdir (str name ".json")))))
+       (edn/read-string (slurp (java.io.File. lexdir (str name ".edn")))))
      (defn- manifest []
-       (json/parse-string (slurp (java.io.File. actor-dir "manifest.jsonld"))))))
+       (:actor/manifest (edn/read-string (slurp (java.io.File. repository-root "manifest.edn")))))))
 
 ;; ── navigation over an AT-Proto lexicon (string keys) ──
 (defn- record-node [doc]
